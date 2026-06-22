@@ -2,5 +2,6 @@
   "buildCommand": "turbo run build --filter=@umkm/web...",
   "outputDirectory": "apps/web/.next",
   "installCommand": "pnpm install",
+  "framework": "nextjs",
   "regions": ["sin1"]
 }
