@@ -10,7 +10,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { UserRole } from '@prisma/client';
+import { UserRole } from '../../common/types/enums';
 import { ProductsService } from './products.service';
 import { CreateProductDto, ProductFilterDto, UpdateProductDto } from './dto/create-product.dto';
 import { Public } from '../../common/decorators/public.decorator';

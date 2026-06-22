@@ -9,7 +9,7 @@ import {
   Min,
   MinLength,
 } from 'class-validator';
-import { ProductStatus } from '@prisma/client';
+import { ProductStatus } from '../../../common/types/enums';
 
 export class CreateProductDto {
   @ApiProperty({ example: 'Batik Tulis Yogyakarta Motif Parang' })

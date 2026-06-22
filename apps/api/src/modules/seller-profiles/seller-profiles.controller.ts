@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { UserRole } from '@prisma/client';
+import { UserRole } from '../../common/types/enums';
 import { SellerProfilesService } from './seller-profiles.service';
 import { CreateSellerProfileDto } from './dto/create-seller-profile.dto';
 import { PaginationDto } from '../../common/dto/pagination.dto';

@@ -3,7 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { ProductStatus } from '@prisma/client';
+import { ProductStatus } from '../../common/types/enums';
 import { PrismaService } from '../../prisma/prisma.service';
 import { CreateProductDto, ProductFilterDto, UpdateProductDto } from './dto/create-product.dto';
 import { paginate } from '../../common/dto/pagination.dto';

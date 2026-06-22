@@ -1,4 +1,5 @@
-import { PrismaClient, UserRole, UserStatus } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
+import { UserRole, UserStatus } from '../src/common/types/enums';
 import * as argon2 from 'argon2';
 
 const prisma = new PrismaClient();
