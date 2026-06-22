@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
 import { StarRating } from "@/components/StarRating";
+import { AddToCartButton } from "@/components/AddToCartButton";
 import { getProductById, getProductsByCategory, products } from "@/lib/dummy-data";
 import { formatRupiah, formatNumber, discountPercent, productImage } from "@/lib/utils";
 
@@ -158,19 +159,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   )}
                 </div>
 
-                <div className="mt-6 grid grid-cols-2 gap-3">
-                  <button className="rounded-xl bg-teal-600 py-3 text-base font-semibold text-white hover:bg-teal-700 transition shadow">
-                    + Keranjang
-                  </button>
-                  <button className="rounded-xl bg-red-500 py-3 text-base font-semibold text-white hover:bg-red-600 transition shadow">
-                    Beli Sekarang
-                  </button>
+                <div className="mt-6">
+                  <AddToCartButton product={product} />
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-3 text-sm text-gray-500">
-                  <span>✓ Stok: <strong className="text-gray-800">{product.stock}</strong></span>
                   <span>✓ Berat: <strong className="text-gray-800">{product.weight}gr</strong></span>
                   <span>✓ Bayar setelah sampai tersedia</span>
+                  <span>✓ Gratis retur 7 hari</span>
                 </div>
               </div>
 
