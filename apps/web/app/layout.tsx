@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { BottomNav } from "@/components/BottomNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,13 @@ export default function RootLayout({
   return (
     <html lang="id" className="h-full antialiased">
       <body className={`${inter.className} min-h-full flex flex-col`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* Extra bottom padding on mobile for fixed bottom nav */}
+          <div className="flex flex-col flex-1 pb-20 lg:pb-0">
+            {children}
+          </div>
+          <BottomNav />
+        </Providers>
       </body>
     </html>
   );
