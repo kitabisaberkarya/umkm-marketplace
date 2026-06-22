@@ -1,167 +1,191 @@
-export default function Home() {
+import Link from "next/link";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { ProductCard } from "@/components/ProductCard";
+import {
+  categories,
+  getFeaturedProducts,
+  getNewProducts,
+  products,
+} from "@/lib/dummy-data";
+
+export default function HomePage() {
+  const featured = getFeaturedProducts().slice(0, 10);
+  const newArrivals = getNewProducts().slice(0, 10);
+  const trending = [...products]
+    .sort((a, b) => b.soldCount - a.soldCount)
+    .slice(0, 10);
+
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-950">
-      {/* Navbar */}
-      <nav className="border-b border-gray-100 dark:border-gray-800">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600">
-                <span className="text-sm font-bold text-white">U</span>
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-gray-50">
+        {/* Hero */}
+        <section className="bg-gradient-to-br from-teal-600 via-teal-700 to-emerald-800 text-white">
+          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm backdrop-blur-sm">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400"></span>
+                180+ Produk UMKM Tersedia
               </div>
-              <span className="text-lg font-bold text-gray-900 dark:text-white">UMKMku</span>
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                Belanja Produk <span className="text-teal-200">UMKM Lokal</span>
+                <br className="hidden sm:block" /> Langsung dari Pengrajin
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-lg text-teal-100">
+                Temukan ribuan produk autentik dari pengrajin seluruh Indonesia.
+                Makanan, fashion batik, kerajinan tangan, kecantikan herbal, dan
+                lebih banyak lagi.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                <Link
+                  href="/produk"
+                  className="rounded-xl bg-white px-6 py-3 text-base font-semibold text-teal-700 shadow hover:bg-teal-50 transition"
+                >
+                  Mulai Belanja
+                </Link>
+                <Link
+                  href="#"
+                  className="rounded-xl border border-white/30 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition"
+                >
+                  Buka Toko Gratis →
+                </Link>
+              </div>
+              <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-teal-200">
+                <span>✓ Gratis ongkir min. tertentu</span>
+                <span>✓ Escrow Payment Aman</span>
+                <span>✓ 100% Produk UMKM Lokal</span>
+                <span>✓ Seller Gratis Berjualan</span>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <a
-                href="#"
-                className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-              >
-                Masuk
-              </a>
-              <a
-                href="#"
-                className="rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700"
-              >
-                Daftar
-              </a>
-            </div>
           </div>
-        </div>
-      </nav>
+        </section>
 
-      {/* Hero */}
-      <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-sm text-teal-700 dark:bg-teal-950 dark:text-teal-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-500"></span>
-            Marketplace UMKM Indonesia
+        {/* Kategori */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-bold text-gray-900">Kategori Produk</h2>
+            <Link href="/produk" className="text-sm text-teal-600 hover:underline">
+              Lihat Semua →
+            </Link>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-            Belanja Produk{" "}
-            <span className="text-teal-600">UMKM Lokal</span>
-            <br />
-            Langsung dari Pengrajin
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
-            UMKMku menghubungkan pembeli dengan ribuan penjual UMKM Indonesia.
-            Temukan produk autentik — kerajinan, kuliner, fashion, dan lebih banyak lagi.
-            Gratis untuk penjual.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-4">
-            <a
-              href="#"
-              className="rounded-xl bg-teal-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-teal-700"
-            >
-              Mulai Belanja
-            </a>
-            <a
-              href="#"
-              className="rounded-xl border border-gray-200 px-6 py-3 text-base font-semibold text-gray-700 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-900"
-            >
-              Daftar sebagai Penjual →
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Kategori */}
-      <section className="bg-gray-50 dark:bg-gray-900 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
-            Kategori Populer
-          </h2>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {CATEGORIES.map((cat) => (
-              <a
-                key={cat.name}
-                href="#"
-                className="flex flex-col items-center gap-3 rounded-2xl bg-white p-4 shadow-sm transition hover:shadow-md dark:bg-gray-800"
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+            {categories.map((cat) => (
+              <Link
+                key={cat.slug}
+                href={`/kategori/${cat.slug}`}
+                className="flex flex-col items-center gap-2 rounded-2xl bg-white p-4 shadow-sm border border-gray-100 transition hover:shadow-md hover:border-teal-200"
               >
                 <span className="text-3xl">{cat.icon}</span>
-                <span className="text-center text-sm font-medium text-gray-700 dark:text-gray-300">
+                <span className="text-center text-xs font-medium text-gray-700 leading-tight">
                   {cat.name}
                 </span>
-              </a>
+                <span className="text-[10px] text-gray-400">{cat.count}+ produk</span>
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Fitur */}
-      <section className="py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-12 text-center text-2xl font-bold text-gray-900 dark:text-white">
-            Kenapa UMKMku?
-          </h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
-            {FEATURES.map((f) => (
-              <div key={f.title} className="text-center">
-                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 dark:bg-teal-900">
-                  <span className="text-2xl">{f.icon}</span>
+        {/* Produk Unggulan */}
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mb-1 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
+            ⭐ Produk Unggulan
+          </div>
+          <div className="flex items-center justify-between mb-4 mt-2">
+            <h2 className="text-xl font-bold text-gray-900">Pilihan Terbaik Kami</h2>
+            <Link href="/produk?filter=featured" className="text-sm text-teal-600 hover:underline">
+              Lihat Semua →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {featured.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </section>
+
+        {/* Terlaris */}
+        <section className="bg-white py-10">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-1 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600">
+              🔥 Terlaris
+            </div>
+            <div className="flex items-center justify-between mb-4 mt-2">
+              <h2 className="text-xl font-bold text-gray-900">Paling Banyak Dibeli</h2>
+              <Link href="/produk?sort=terlaris" className="text-sm text-teal-600 hover:underline">
+                Lihat Semua →
+              </Link>
+            </div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {trending.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Produk Baru */}
+        <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <div className="mb-1 inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
+            ✨ Baru Masuk
+          </div>
+          <div className="flex items-center justify-between mb-4 mt-2">
+            <h2 className="text-xl font-bold text-gray-900">Produk Terbaru</h2>
+            <Link href="/produk?filter=baru" className="text-sm text-teal-600 hover:underline">
+              Lihat Semua →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {newArrivals.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </section>
+
+        {/* Banner keuntungan */}
+        <section className="bg-white py-12">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="mb-10 text-center text-2xl font-bold text-gray-900">
+              Kenapa Pilih UMKMku?
+            </h2>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+              {[
+                { icon: "🆓", title: "Gratis untuk Penjual", desc: "Tidak ada komisi, biaya bulanan, atau hidden fee." },
+                { icon: "🔒", title: "Transaksi Escrow Aman", desc: "Dana aman. Penjual terima uang setelah barang sampai." },
+                { icon: "🚚", title: "Multi Kurir", desc: "JNE, J&T, SiCepat, AnterAja, Pos Indonesia, dan lainnya." },
+                { icon: "⭐", title: "Produk Terverifikasi", desc: "Semua seller diverifikasi tim UMKMku sebelum berjualan." },
+              ].map((f) => (
+                <div key={f.title} className="text-center">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50">
+                    <span className="text-2xl">{f.icon}</span>
+                  </div>
+                  <h3 className="mb-1 text-sm font-semibold text-gray-900">{f.title}</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">{f.desc}</p>
                 </div>
-                <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                  {f.title}
-                </h3>
-                <p className="text-sm leading-6 text-gray-500 dark:text-gray-400">
-                  {f.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Penjual */}
-      <section className="bg-teal-600 py-16">
-        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white">
-            Punya produk UMKM? Jual di sini — Gratis!
-          </h2>
-          <p className="mt-4 text-teal-100">
-            Buka toko online dalam 5 menit. Tidak ada biaya langganan, tidak ada komisi penjualan.
-          </p>
-          <a
-            href="#"
-            className="mt-8 inline-block rounded-xl bg-white px-8 py-3 text-base font-semibold text-teal-700 hover:bg-teal-50"
-          >
-            Buka Toko Sekarang
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-100 py-8 dark:border-gray-800">
-        <div className="mx-auto max-w-7xl px-4 text-center text-sm text-gray-500 sm:px-6 lg:px-8">
-          © 2026 UMKMku. Platform Marketplace UMKM Indonesia.
-        </div>
-      </footer>
-    </main>
+        {/* CTA Penjual */}
+        <section className="bg-gradient-to-r from-teal-600 to-emerald-700 py-16">
+          <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-white">
+              Punya produk UMKM? Jual di sini — Gratis!
+            </h2>
+            <p className="mt-3 text-teal-100">
+              Buka toko online dalam 5 menit. Tidak ada biaya, tidak ada komisi.
+            </p>
+            <Link
+              href="#"
+              className="mt-8 inline-block rounded-xl bg-white px-8 py-3 text-base font-semibold text-teal-700 hover:bg-teal-50 transition shadow"
+            >
+              Buka Toko Sekarang
+            </Link>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }
-
-const CATEGORIES = [
-  { name: "Makanan & Minuman", icon: "🍱" },
-  { name: "Fashion & Batik", icon: "👗" },
-  { name: "Kerajinan Tangan", icon: "🏺" },
-  { name: "Kecantikan", icon: "💄" },
-  { name: "Agro & Herbal", icon: "🌿" },
-  { name: "Elektronik Lokal", icon: "🔌" },
-];
-
-const FEATURES = [
-  {
-    icon: "🆓",
-    title: "Gratis untuk Penjual",
-    desc: "Tidak ada biaya pendaftaran atau komisi. Monetisasi kami berasal dari iklan, bukan dari kantong penjual.",
-  },
-  {
-    icon: "🔒",
-    title: "Transaksi Aman",
-    desc: "Dana pembeli ditahan sistem escrow. Penjual menerima pembayaran setelah barang sampai ke pembeli.",
-  },
-  {
-    icon: "🚚",
-    title: "Multi-Kurir",
-    desc: "Bandingkan harga ongkos kirim dari JNE, J&T, SiCepat, dan kurir lain dalam satu checkout.",
-  },
-];
