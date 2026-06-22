@@ -1,17 +1,22 @@
 import Link from "next/link";
 import { categories } from "@/lib/dummy-data";
 
+const LOGO_URL =
+  "https://res.cloudinary.com/ddgjbfcyi/image/upload/v1780496713/LOGO_KITA_BISA_BERKARYA24_cphgun.png";
+
 export function Footer() {
   return (
     <footer className="border-t border-gray-100 bg-gray-50 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600">
-                <span className="text-sm font-bold text-white">U</span>
-              </div>
-              <span className="text-lg font-bold text-gray-900">UMKMku</span>
+            <div className="mb-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={LOGO_URL}
+                alt="UMKMku"
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">
               Marketplace #1 untuk produk UMKM Indonesia. Gratis untuk semua

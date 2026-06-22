@@ -6,6 +6,9 @@ import { useState, Suspense } from "react";
 import { categories } from "@/lib/dummy-data";
 import { useCart } from "./CartProvider";
 
+const LOGO_URL =
+  "https://res.cloudinary.com/ddgjbfcyi/image/upload/v1780496713/LOGO_KITA_BISA_BERKARYA24_cphgun.png";
+
 function NavbarInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -22,11 +25,13 @@ function NavbarInner() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Top bar */}
         <div className="flex h-16 items-center gap-4">
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-600">
-              <span className="text-sm font-bold text-white">U</span>
-            </div>
-            <span className="text-lg font-bold text-gray-900">UMKMku</span>
+          <Link href="/" className="flex items-center shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={LOGO_URL}
+              alt="UMKMku"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           <form onSubmit={handleSearch} className="flex flex-1 max-w-xl">
