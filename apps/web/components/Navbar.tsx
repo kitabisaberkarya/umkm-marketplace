@@ -91,10 +91,10 @@ function NavbarInner() {
                 </span>
               )}
             </Link>
-            <Link href="#" className="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50">
+            <Link href="/login" className="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50">
               Masuk
             </Link>
-            <Link href="#" className="rounded-xl bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700 transition">
+            <Link href="/register" className="rounded-xl bg-teal-600 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-700 transition">
               Daftar
             </Link>
           </div>

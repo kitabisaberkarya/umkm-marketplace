@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ProductCard } from "@/components/ProductCard";
+import { HeroSlider } from "@/components/HeroSlider";
 import {
   categories,
   getFeaturedProducts,
@@ -22,9 +23,11 @@ export default function HomePage() {
       <main className="min-h-screen bg-gray-50">
 
         {/* ── Hero ── */}
-        <section className="bg-gradient-to-br from-teal-600 via-teal-700 to-emerald-800 text-white">
-          <div className="mx-auto max-w-7xl px-4 py-10 sm:py-16 lg:py-20 sm:px-6 lg:px-8">
-            <div className="text-center">
+        <section className="bg-gradient-to-br from-teal-600 via-teal-700 to-emerald-800 text-white overflow-hidden">
+          <div className="mx-auto max-w-7xl px-4 pt-8 pb-0 sm:pt-12 sm:px-6 lg:px-8">
+
+            {/* Text + CTA */}
+            <div className="text-center mb-6 sm:mb-8">
               <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs sm:text-sm backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400"></span>
                 180+ Produk UMKM Tersedia
@@ -35,27 +38,30 @@ export default function HomePage() {
                 <br className="hidden sm:block" />
                 <span className="block sm:inline"> Langsung dari Pengrajin</span>
               </h1>
-              <p className="mx-auto mt-4 max-w-xl text-sm sm:text-base sm:mt-6 text-teal-100 leading-relaxed">
+              <p className="mx-auto mt-3 max-w-xl text-sm sm:text-base sm:mt-4 text-teal-100 leading-relaxed">
                 Temukan ribuan produk autentik dari pengrajin seluruh Indonesia —
                 makanan, fashion batik, kerajinan, kecantikan herbal, dan lebih banyak lagi.
               </p>
-              <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3">
+              <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-3">
                 <Link href="/produk"
                   className="rounded-xl bg-white px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-teal-700 shadow hover:bg-teal-50 transition">
                   Mulai Belanja
                 </Link>
-                <Link href="#"
+                <Link href="/register?tipe=penjual"
                   className="rounded-xl border border-white/30 px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-white hover:bg-white/10 transition">
                   Buka Toko Gratis →
                 </Link>
               </div>
-              <div className="mt-5 sm:mt-8 flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-teal-200">
+              <div className="mt-4 sm:mt-5 flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-teal-200">
                 <span>✓ Escrow Aman</span>
                 <span>✓ 100% Produk Lokal</span>
                 <span>✓ Seller Gratis</span>
                 <span>✓ Multi Kurir</span>
               </div>
             </div>
+
+            {/* 3D Slider */}
+            <HeroSlider />
           </div>
         </section>
 
